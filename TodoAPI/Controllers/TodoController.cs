@@ -52,7 +52,8 @@ namespace TodoAPI.Controllers
             await _unitOfWork.Todos.AddTodoAsync(todo);
             await _unitOfWork.CompleteAsync();
 
-            return CreatedAtAction(nameof(GetTodoById), new {Id = todo.Id});
+            var createdTodoDto = _mapper.Map<TodoDto>(todo);
+            return CreatedAtAction(nameof(GetTodoById), new { id = todo.Id }, createdTodoDto);
         }
 
         [HttpPut("{id}")]

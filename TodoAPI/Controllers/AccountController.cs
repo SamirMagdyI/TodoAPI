@@ -50,7 +50,7 @@ namespace TodoAPI.Controllers
             }
 
             var token = GenerateJwtToken(user);
-            return Ok(token);
+            return Ok(new { token });
         }
 
         private string GenerateJwtToken(User user)
